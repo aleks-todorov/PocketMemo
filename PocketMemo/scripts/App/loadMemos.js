@@ -12,7 +12,7 @@ var app = app || {};
         options: [],
         textMemosCollection: [],
         locationMemosCollection: [],
-        selectedOption: null,
+        audioMemosCollection: [],
         change: onOptionChanged,
     });
 
@@ -21,10 +21,11 @@ var app = app || {};
         var options = dataPersister.getLoadOptions();
         var textMemosCollection = dataPersister.getTextMemos();
         var locationMemosCollection = dataPersister.getLocationMemos();
+        var audioMemosCollection = dataPersister.getAudiMemos();
         viewModel.set("options", options);
         viewModel.set("textMemosCollection", textMemosCollection);
         viewModel.set("locationMemosCollection", locationMemosCollection);
-        viewModel.selectedOption = options[0];
+        viewModel.set("audioMemosCollection", audioMemosCollection);
         $(".inner-content > div").hide();
         $(baseSelector + 0).show();
         initLists();
@@ -34,14 +35,12 @@ var app = app || {};
         $("#textMemos-listview").kendoMobileListView({
             dataSource: kendo.data.DataSource.create({ data: viewModel.textMemosCollection, group: "Date" }),
             template: $("#customTextMemosListTemplate").html(),
-            selectable: true,
             headerTemplate: "<h2>Date: ${value}</h2>"
         })
 
         $("#locationMemos-listView").kendoMobileListView({
             dataSource: kendo.data.DataSource.create({ data: viewModel.locationMemosCollection, group: "Date" }),
             template: $("#customLocationMemosListTemplate").html(),
-            selectable: true,
             headerTemplate: "<h2>Date: ${value}</h2>"
         })
 
@@ -52,6 +51,12 @@ var app = app || {};
             navigator.notification.vibrate(3000);
             navigator.notification.alert("Not implemented yet!");
         });
+
+        $("#audioMemos-list").kendoMobileListView({
+            dataSource: kendo.data.DataSource.create({ data: viewModel.audioMemosCollection, group: "Date" }),
+            template: $("#customAudioMemoListTemplate").html(),
+            headerTemplate: "<h2>Date: ${value}</h2>"
+        })
     }
 
     function onOptionChanged(e) {

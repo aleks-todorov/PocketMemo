@@ -21,7 +21,6 @@ var app = app || {};
         getLocation: onGetLocationButtonClicked,
         addPicture: onAddPictureButtonClicked,
         audioRec: onAudioButtonClicked,
-
     });
 
     function onAudioButtonClicked() {
@@ -30,8 +29,19 @@ var app = app || {};
             var i,
             media = document.getElementById("media");
             media.innerHTML = "";
+            var path = "";
+            var myDate = new Date();
+            var date = myDate.toDateString();
             for (i = 0; i < capturedFiles.length; i += 1) {
-                media.innerHTML += '<p>Capture taken! Its path is: ' + capturedFiles[i].fullPath + '</p>'
+                var path = capturedFiles[i].fullPath;
+                media.innerHTML += '<p>Capture taken! Its path is: ' + path + '</p>';
+
+                var audioMemo = {
+                    Path: path,
+                    Date: date,
+                };
+
+                dataPersister.saveAudioMemoInLocaStorage(audioMemo);
             }
 
         }, function () {
@@ -61,7 +71,6 @@ var app = app || {};
             var picture = document.getElementById('picture-container');
             picture.style.display = 'block';
 
-            // Show the captured photo.
             var url = imageData;
             debugger;
             picture.src = url;

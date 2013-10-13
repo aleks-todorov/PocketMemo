@@ -26,7 +26,9 @@
             </div>
 
             <div id="load-option1">
-                <p>Load Audio recording</p>
+
+                 <ul id="audioMemos-list"></ul>
+
             </div>
 
             <div id="load-option2">
@@ -53,6 +55,14 @@
         <hr/> 
     </div>
 </script>
+
+<script type="text/x-kendo-template" id="customAudioMemoListTemplate">  
+    <div class="audioMemosElementContainer">
+        <h3 class="item-title">${Path}</h3> 
+        <hr/> 
+    </div>
+</script>
+
 
 <script type="text/x-kendo-template" id="customLocationMemosListTemplate">  
     <div class="ListMemosElementContainer"> 

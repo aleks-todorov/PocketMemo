@@ -52,8 +52,25 @@
         var locationMemosCollection = [];
         if (localStorageApp.getItem("locationMemosCollection") != null) {
             locationMemosCollection = JSON.parse(localStorageApp.getItem("locationMemosCollection"));
-        } 
+        }
         return locationMemosCollection;
+    }
+
+    saveAudioMemoInLocaStorage = function (audioMemo) {
+        var audioMemosCollection = [];
+        if (localStorageApp.getItem("audioMemosCollection") != null) {
+            audioMemosCollection = JSON.parse(localStorageApp.getItem("audioMemosCollection"));
+        }
+        locationMemosCollection.push(audioMemo);
+        localStorageApp.setItem("audioMemosCollection", JSON.stringify(audioMemosCollection));
+    }
+
+    getAudiMemos = function () {
+        var audioMemosCollection = [];
+        if (localStorageApp.getItem("audioMemosCollection") != null) {
+            audioMemosCollection = JSON.parse(localStorageApp.getItem("audioMemosCollection"));
+        }
+        return audioMemosCollection;
     }
 
     return {
@@ -63,6 +80,7 @@
         getTextMemos: getTextMemos,
         saveLocationMemo: saveLocationMemoInLocaStorage,
         getLocationMemos: getLocationMemos,
-         
+        saveAudioMemoInLocaStorage: saveAudioMemoInLocaStorage,
+        getAudiMemos: getAudiMemos
     }
 }());

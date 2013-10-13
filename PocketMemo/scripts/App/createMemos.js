@@ -46,11 +46,11 @@ var app = app || {};
 
         }, function () {
             if (device.uuid == "e0101010d38bde8e6740011221af335301010333" || device.uuid == "e0908060g38bde8e6740011221af335301010333") {
-                alert(error);
+                alert("Error while creating audio record!");
             }
             else {
                 var media = document.getElementById("media");
-                media.innerHTML = "An error occured! Code:" + error.code;
+                media.innerHTML = "An error occured!";
             }
         }, { limit: 1 });
 
@@ -72,7 +72,6 @@ var app = app || {};
             picture.style.display = 'block';
 
             var url = imageData;
-            debugger;
             picture.src = url;
             viewModel.set("PictureUrl", url);
 

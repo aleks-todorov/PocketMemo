@@ -61,7 +61,7 @@
         if (localStorageApp.getItem("audioMemosCollection") != null) {
             audioMemosCollection = JSON.parse(localStorageApp.getItem("audioMemosCollection"));
         }
-        locationMemosCollection.push(audioMemo);
+        audioMemosCollection.push(audioMemo);
         localStorageApp.setItem("audioMemosCollection", JSON.stringify(audioMemosCollection));
     }
 

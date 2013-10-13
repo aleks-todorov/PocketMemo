@@ -1,0 +1,67 @@
+﻿<div id="tabstrip-create"
+    data-id="tabstrip-create"
+    data-role="view"
+    data-title="Create Memo"
+    data-show="app.createMemos.init"
+    data-init="app.createMemos.init"
+    data-layout="main-layout">
+
+    <div data-role="content" class="view-content">
+        <h2>Select type of Memo:</h2>
+
+        <div id="drop-down-list">
+            <select
+                id="options-list"
+                data-id="options-list"
+                data-role="dropdownlist"
+                data-bind="source: options, events: { change: change }"
+                data-text-field="Name"
+                data-value-field="Id">
+            </select>
+        </div>
+        <div data-role="content" class="inner-content" id="create-options-container">
+
+            <div id="create-option0">
+                <label for="text-memo-title">Title:</label>
+                <input type="text" id="text-memo-title" spellcheck="true" placeholder="Enter your title here" />
+                <label for="text-memo-content">Content:</label>
+                <textarea id="text-memo-content" spellcheck="true" placeholder="Content..."></textarea>
+                <br />
+                <input type="button" data-role="button" id="textMemoClear" data-bind="events: { click: clearText }" value="Clear" />
+                <input type="button" data-role="button" data-icon="mostrecent" data-bind="events: { click: saveTextMemo }" value="Save" />
+            </div>
+
+            <div id="create-option1">
+               <p>In order to start recordig sound, please click on Record.</p>
+                <input type="button" data-role="button" id="audioRec" data-bind="events: { click: audioRec }" value="Record Audion" /> 
+                <div id="media">
+
+                </div>
+            </div>
+
+            <div id="create-option2">
+                <p>Add Video recording</p>
+            </div>
+
+            <div id="create-option3">
+                <div class="no-internet-notification">
+                    <p>Currently you dont have internet and your location cannot be obtained. Please try again later!</p>
+                </div>
+                <div class="on-internet-content">
+                    <label for="location-memo-title">Description:</label>
+                    <textarea id="location-memo-description" spellcheck="true" placeholder="Enter your description here"></textarea>
+                    <input type="button" data-role="button" id="makePicture" data-bind="events: { click: addPicture }" value="Make picture" />
+                    <div>
+                        <p>Latitude:  <span data-bind="text: Latitude"></span></p>
+                        <p>Longitude:  <span data-bind="text: Longitude"></span></p>
+                    </div>
+                    <div>
+                        <input type="button" data-role="button" id="getLocation" data-bind="events: { click: getLocation }" value="Get Location" />
+                        <input type="button" data-role="button" id="saveLocation" data-bind="events: { click: saveLocation }" value="Save Location" />
+                    </div>
+                    <img src="#" id="picture-container" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

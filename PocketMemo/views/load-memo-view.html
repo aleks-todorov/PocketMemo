@@ -1,0 +1,67 @@
+﻿<div id="tabstrip-load"
+    data-role="view"
+    data-title="Load Memo"
+    data-init="app.loadMemos.init"
+    data-show="app.loadMemos.init"
+    data-layout="main-layout">
+
+    <div data-role="content" class="view-content">
+        <h2>Select type of Memo:</h2>
+
+        <div id="drop-down-list">
+            <select
+                id="options-list"
+                data-id="options-list"
+                data-role="dropdownlist"
+                data-bind="source: options, events: { change: change }"
+                data-text-field="Name"
+                data-value-field="Id">
+            </select>
+        </div>
+
+        <div data-role="content" class="inner-content" id="load-options-container">
+
+            <div id="load-option0">
+                <ul id="textMemos-listview"></ul>
+            </div>
+
+            <div id="load-option1">
+                <p>Load Audio recording</p>
+            </div>
+
+            <div id="load-option2">
+                <p>Load Video recording</p>
+            </div>
+
+            <div id="load-option3">
+                <div class="no-internet-notification">
+                    <p>Currently you dont have internet and your location cannot be obtained. Please try again later!</p>
+                </div>
+                <div class="on-internet-content">
+                    <div id="map-canvas"></div>
+                    <ul id="locationMemos-listView"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/x-kendo-template" id="customTextMemosListTemplate">  
+    <div class="textMemosElementContainer">
+        <h3 class="item-title">${Title}</h3>
+        <p class="item-info">${Content}</p> 
+        <hr/> 
+    </div>
+</script>
+
+<script type="text/x-kendo-template" id="customLocationMemosListTemplate">  
+    <div class="ListMemosElementContainer"> 
+        <h3 class="item-description">${Description}</h3> 
+        <p>Latitude: <span>${Latitude}</span> </p> 
+        <p>Longitude: <span>${Longitude}</span> </p>  
+        <img src="${PictureUrl}" class="location-pictures" />
+        <input type="button" class="item-showMapButton" data-role="button" data-longitude="${Longitude}" data-latitude="${Latitude}" value="Show Map" />  
+        <hr/>  
+    </div>
+</script>
+
